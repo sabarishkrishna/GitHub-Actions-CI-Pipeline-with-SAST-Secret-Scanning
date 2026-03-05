@@ -21,8 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-      - run: npm ci
+      - run: npm install
       - run: npm test
 
   # 2. Secret Scanning
@@ -45,4 +44,4 @@ jobs:
       image: returntocorp/semgrep:latest
     steps:
       - uses: actions/checkout@v4
-      - run: semgrep --config=p/owasp-top-ten --error src/
+      - run: semgrep --config=p/owasp-top-ten --error .
